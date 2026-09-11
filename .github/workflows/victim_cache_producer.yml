@@ -1,0 +1,16 @@
+name: victim-cache-producer
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir -p vault
+          echo "VICTIM-CACHE-CANARY-0911 owner=mr-benty run=${GITHUB_RUN_ID} (non-secret marker)" > vault/canary.txt
+      - uses: actions/cache/save@v4
+        with:
+          path: vault
+          key: victim-secrets-v1

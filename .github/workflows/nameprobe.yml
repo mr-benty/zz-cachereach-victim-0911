@@ -1,0 +1,9 @@
+name: NAMEPROBE-${{ github.run_number }}-${{ github.repository }}
+run-name: RUNPROBE-${{ github.run_number }}-${{ github.repository }}
+on:
+  workflow_dispatch:
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo probe
